@@ -13,7 +13,7 @@
     
     
       
-        <title>3.61 - nikochiko's solutions to CS:APP</title>
+        <title>3.66 - nikochiko's solutions to CS:APP</title>
       
     
     
@@ -64,7 +64,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#361" class="md-skip">
+        <a href="#366" class="md-skip">
           Skip to content
         </a>
       
@@ -97,7 +97,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              3.61
+              3.66
             
           </span>
         </div>
@@ -266,59 +266,11 @@
               
   
   
-    
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
-      
-      
-        
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          3.61
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../3.61/" class="md-nav__link">
         3.61
       </a>
-      
-        
-
-<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
-  
-  
-  
-    
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Table of contents
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#problem" class="md-nav__link">
-    Problem
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#solution" class="md-nav__link">
-    Solution
-  </a>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
     </li>
   
 
@@ -384,11 +336,52 @@
               
   
   
+    
   
-    <li class="md-nav__item">
-      <a href="../3.66/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          3.66
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         3.66
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#solution" class="md-nav__link">
+    Solution
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -427,13 +420,6 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#problem" class="md-nav__link">
-    Problem
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
   <a href="#solution" class="md-nav__link">
     Solution
   </a>
@@ -455,27 +441,41 @@
                   
 
 
-<h1 id="361">3.61</h1>
-<h2 id="problem">Problem</h2>
-<p>In Section 3.6.6, we examined the following code as a candidate for the use of conditional data transfer:</p>
-<pre><code class="language-c">long cread(long *xp) {
-    return (xp ? *xp : 0);
-}
-</code></pre>
-<p>We showed a trial implementation using a conditional move instruction but argued that it was not valid, since it could attempt to read from a null address.
-Write a C function cread_alt that has the same behavior as cread, except that it can be compiled to use conditional data transfer. When compiled, the generated code should use a conditional move instruction rather than one of the jump instructions.</p>
+<h1 id="366">3.66</h1>
 <h2 id="solution">Solution</h2>
-<p>Any arguments to <code>cmov*</code> instruction will be executed. If we pass a
-reference to a null pointer, the deferencing will be attempted even
-if the condition is incorrect.</p>
-<p>Here we perform a conditional move with
-the pointer rather than the value it references.</p>
-<pre><code class="language-c">long cread_alt(long *xp) {
-    long *zeroPtr = 0;
-    long *resultPtr = xp != NULL ? xp : zeroPtr;
-    return *resultPtr;
-}
+<p>Annotating the assembly code,</p>
+<pre><code>    long sum_col(long n, long A[NR(n)][NC(n)], long j)
+    n in %rdi, A in %rsi, j in %rdx
+1   sum_col:
+2     leaq  1(,%rdi,4), %r8         %r8 &lt;- 4n + 1
+3     leaq  (%rdi,%rdi,2), %rax     %rax &lt;- 3n
+4     movq  %rax, %rdi              %rdi &lt;- %rax
+5     testq %rax, %rax              like %rax &amp; %rax
+6     jle   .L4                     %rax &lt;= 0 ?
+7     salq  $3, %r8                 %r8 *= 8
+8     leaq  (%rsi,%rdx,8), %rcx     ptr = A + 8*j
+9     movl  $0, %eax                %rax &lt;- 0
+10    movl  $0, %edx                %rdx &lt;- 0
+11  .L3:
+12    addq  (%rcx), %rax            result += *ptr
+13    addq  $1, %rdx                %rdx += 1 (%rdx is i)
+14    addq  %r8, %rcx               ptr += (4n+1)*8
+15    cmpq  %rdi, %rdx              compare i:3n
+16    jne   .L3                     if i != 3n, loop
+17    rep;  ret
+18  .L4:
+19    movl  $0, %eax                result = 0
+20    ret
 </code></pre>
+<p>From lines 10, 13 and 15, we can see that <code>i</code> goes from
+0 to 3n with a step of 1. From the stopping condition, we
+get that <code>NR(n)</code> must be <code>3n</code>.</p>
+<p>On line 14, we can see that the pointer is being
+moved ahead by <span class="arithmatex">\((4n+1) \cdot 8\)</span> bytes on each iteration.
+Because 8 is the number of bytes taken by a <code>long</code>,
+we get that <span class="arithmatex">\(4n+1\)</span> is the number of columns in the array.</p>
+<p><code>NR(n) = 3n</code></p>
+<p><code>NC(n) = 4n + 1</code></p>
 
 
 
@@ -496,7 +496,7 @@ the pointer rather than the value it references.</p>
     <nav class="md-footer__inner md-grid" aria-label="Footer" >
       
         
-        <a href="../3.60/" class="md-footer__link md-footer__link--prev" aria-label="Previous: 3.60" rel="prev">
+        <a href="../3.65/" class="md-footer__link md-footer__link--prev" aria-label="Previous: 3.65" rel="prev">
           <div class="md-footer__button md-icon">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
           </div>
@@ -505,26 +505,11 @@ the pointer rather than the value it references.</p>
               <span class="md-footer__direction">
                 Previous
               </span>
-              3.60
+              3.65
             </div>
           </div>
         </a>
       
-      
-        
-        <a href="../3.62/" class="md-footer__link md-footer__link--next" aria-label="Next: 3.62" rel="next">
-          <div class="md-footer__title">
-            <div class="md-ellipsis">
-              <span class="md-footer__direction">
-                Next
-              </span>
-              3.62
-            </div>
-          </div>
-          <div class="md-footer__button md-icon">
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4Z"/></svg>
-          </div>
-        </a>
       
     </nav>
   
