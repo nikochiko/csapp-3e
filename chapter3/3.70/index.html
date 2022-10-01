@@ -13,7 +13,7 @@
     
     
       
-        <title>3.62 - nikochiko's solutions to CS:APP</title>
+        <title>3.70 - nikochiko's solutions to CS:APP</title>
       
     
     
@@ -64,7 +64,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#362" class="md-skip">
+        <a href="#370" class="md-skip">
           Skip to content
         </a>
       
@@ -97,7 +97,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              3.62
+              3.70
             
           </span>
         </div>
@@ -280,59 +280,11 @@
               
   
   
-    
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
-      
-      
-        
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          3.62
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../3.62/" class="md-nav__link">
         3.62
       </a>
-      
-        
-
-<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
-  
-  
-  
-    
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Table of contents
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#problem" class="md-nav__link">
-    Problem
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#solution" class="md-nav__link">
-    Solution
-  </a>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
     </li>
   
 
@@ -440,11 +392,66 @@
               
   
   
+    
   
-    <li class="md-nav__item">
-      <a href="../3.70/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          3.70
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         3.70
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#a" class="md-nav__link">
+    A.
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#b" class="md-nav__link">
+    B.
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#c" class="md-nav__link">
+    C.
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -497,15 +504,22 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#problem" class="md-nav__link">
-    Problem
+  <a href="#a" class="md-nav__link">
+    A.
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#solution" class="md-nav__link">
-    Solution
+  <a href="#b" class="md-nav__link">
+    B.
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#c" class="md-nav__link">
+    C.
   </a>
   
 </li>
@@ -525,94 +539,29 @@
                   
 
 
-<h1 id="362">3.62</h1>
-<h2 id="problem">Problem</h2>
-<p>The code that follows shows an example of branching on an enumerated type value in a switch statement. Recall that enumerated types in C are simply a way to introduce a set of names having associated integer values. By default, the values assigned to the names count from zero upward. In our code, the actions associated with the different case labels have been omitted.</p>
-<pre><code class="language-c">1   /* Enumerated type creates set of constants numbered 0 and upward */
-2   typedef enum {MODE_A, MODE_B, MODE_C, MODE_D, MODE_E} mode_t;
-3   
-4   long switch3(long *p1, long *p2, mode_t action)
-5   {
-6       long result = 0;
-7       switch(action) {
-8       case MODE_A:
-9
-10      case MODE_B:
-11  
-12      case MODE_C:
-13  
-14      case MODE_D:
-15  
-16      case MODE_E:
-17  
-18      default:
-19  
-20      }
-21      return result;
-22  }
+<h1 id="370">3.70</h1>
+<h4 id="a">A.</h4>
+<ul>
+<li><code>e1.p</code>    0</li>
+<li><code>e1.y</code>    8</li>
+<li><code>e2.x</code>    0</li>
+<li><code>e2.next</code> 8</li>
+</ul>
+<h4 id="b">B.</h4>
+<p>16 bytes</p>
+<h4 id="c">C.</h4>
+<pre><code class="language-asm">    void proc (union ele *up) up in %rdi
+1   proc:
+2   movq    8(%rdi), %rax   # %rax = up-&gt;next
+3   movq    (%rax), %rdx    # %rdx = up-&gt;next-&gt;p
+4   movq    (%rdx), %rdx    # %rdx = *(up-&gt;next-&gt;p)
+5   subq    8(%rax), %rdx   # %rdx = *(up-&gt;next-&gt;p) - up-&gt;next-&gt;y
+6   movq    %rdx, (%rdi)    # up-&gt;x = *(up-&gt;next-&gt;p) - up-&gt;next-&gt;y
+7   ret
 </code></pre>
-<p>The part of the generated assembly code implementing the different actions is shown in Figure 3.52. The annotations indicate the argument locations, the register values, and the case labels for the different jump destinations.</p>
-<pre><code class="language-asm">    p1 in %rdi, p2 in %rsi, action in %edx
-1   .L8:    MODE_E
-2     movl  $27, %eax
-3     ret
-4   .L3:    MODE_A
-5     movq  (%rsi), %rax
-6     movq  (%rdi), %rdx
-7     movq  %rdx, (%rsi)
-8     ret
-9   .L5:    MODE_B
-10    movq  (%rdi), %rax
-11    addq  (%rsi), %rax
-12    movq  %rax, (%rdi)
-13    ret
-14  .L6:    MODE_C
-15    movq  $59, (%rdi)
-16    movq  (%rsi), %rax
-17    ret
-18  .L7:    MODE_D
-19    movq  (%rsi), %rax
-20    movq  %rax, (%rdi)
-21    movl  $27, %eax
-22    ret
-23  .L9:    default
-24    movl  $12, %eax
-25    ret
-</code></pre>
-<p>Fill in the missing parts of the C code. It contained one case that fell through to another—try to reconstruct this.</p>
-<h2 id="solution">Solution</h2>
-<p>Studying the assembly code, we can see that <code>MODE_E</code> and <code>MODE_D</code>
-have one step in common (<code>movl $27, %eax</code>).
-No other cases have a last step in common, and we can conclude that
-<code>MODE_D</code> was the case that fell through to <code>MODE_E</code>.</p>
-<pre><code class="language-c">/* Enumerated type creates set of constants numbered 0 and upward */
-typedef enum {MODE_A, MODE_B, MODE_C, MODE_D, MODE_E} mode_t;
-
-long switch3(long *p1, long *p2, mode_t action)
-{
-    long result = 0;
-    switch(action) {
-    case MODE_A:
-        result = *p2;
-        *p2 = *p1;
-        break;
-    case MODE_B:
-        result = *p1 + *p2;
-        *p1 = result;
-        break;
-    case MODE_C:
-        *p1 = 59;
-        result = *p2;
-        break;
-    case MODE_D:
-        *p1 = *p2;
-    case MODE_E:
-        result = 27;
-        break;
-    default:
-        result = 12;
-    }
-    return result;
+<p>Filling in the C code:</p>
+<pre><code class="language-c">void proc (union ele *up) {
+    up-&gt;x = *(up-&gt;next-&gt;p) - up-&gt;next-&gt;y;
 }
 </code></pre>
 
@@ -635,7 +584,7 @@ long switch3(long *p1, long *p2, mode_t action)
     <nav class="md-footer__inner md-grid" aria-label="Footer" >
       
         
-        <a href="../3.61/" class="md-footer__link md-footer__link--prev" aria-label="Previous: 3.61" rel="prev">
+        <a href="../3.69/" class="md-footer__link md-footer__link--prev" aria-label="Previous: 3.69" rel="prev">
           <div class="md-footer__button md-icon">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
           </div>
@@ -644,20 +593,20 @@ long switch3(long *p1, long *p2, mode_t action)
               <span class="md-footer__direction">
                 Previous
               </span>
-              3.61
+              3.69
             </div>
           </div>
         </a>
       
       
         
-        <a href="../3.63/" class="md-footer__link md-footer__link--next" aria-label="Next: 3.63" rel="next">
+        <a href="../3.71/" class="md-footer__link md-footer__link--next" aria-label="Next: 3.71" rel="next">
           <div class="md-footer__title">
             <div class="md-ellipsis">
               <span class="md-footer__direction">
                 Next
               </span>
-              3.63
+              3.71
             </div>
           </div>
           <div class="md-footer__button md-icon">
