@@ -1,17 +1,8 @@
-# Welcome to MkDocs
+# Kaustubh's solutions to CS:APP problems
 
-For full documentation visit [mkdocs.org](https://www.mkdocs.org).
+This static website has my solutions to the homework
+problems of the book "Computer Systems: A Programmer's Perspective".
 
-## Commands
+Each problem is a markdown file, and all content is on [this GitHub repository](https://github.com/nikochiko/csapp-3e).
 
-* `mkdocs new [dir-name]` - Create a new project.
-* `mkdocs serve` - Start the live-reloading docs server.
-* `mkdocs build` - Build the documentation site.
-* `mkdocs -h` - Print help message and exit.
-
-## Project layout
-
-    mkdocs.yml    # The configuration file.
-    docs/
-        index.md  # The documentation homepage.
-        ...       # Other markdown pages, images and other files.
+The content index can be viewed on the left sidebar of this page.
