@@ -1,4 +1,4 @@
-site_name: nikochiko's solutions to CS:APP
+site_name: CS:APP 3e solutions
 
 markdown_extensions:
 - pymdownx.arithmatex:
