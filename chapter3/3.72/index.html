@@ -13,7 +13,7 @@
     
     
       
-        <title>3.67 - nikochiko's solutions to CS:APP</title>
+        <title>3.72 - nikochiko's solutions to CS:APP</title>
       
     
     
@@ -64,7 +64,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#367" class="md-skip">
+        <a href="#372" class="md-skip">
           Skip to content
         </a>
       
@@ -97,7 +97,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              3.67
+              3.72
             
           </span>
         </div>
@@ -350,100 +350,11 @@
               
   
   
-    
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
-      
-      
-        
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          3.67
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../3.67/" class="md-nav__link">
         3.67
       </a>
-      
-        
-
-<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
-  
-  
-  
-    
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Table of contents
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#solution" class="md-nav__link">
-    Solution
-  </a>
-  
-    <nav class="md-nav" aria-label="Solution">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#a" class="md-nav__link">
-    A.
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#b" class="md-nav__link">
-    B.
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#c" class="md-nav__link">
-    C.
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#d" class="md-nav__link">
-    D.
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#e" class="md-nav__link">
-    E.
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#f" class="md-nav__link">
-    F.
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
     </li>
   
 
@@ -509,11 +420,86 @@
               
   
   
+    
   
-    <li class="md-nav__item">
-      <a href="../3.72/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          3.72
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         3.72
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#solution" class="md-nav__link">
+    Solution
+  </a>
+  
+    <nav class="md-nav" aria-label="Solution">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#a" class="md-nav__link">
+    A.
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#b" class="md-nav__link">
+    B.
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#c" class="md-nav__link">
+    C.
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#d" class="md-nav__link">
+    D.
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -629,20 +615,6 @@
   
 </li>
         
-          <li class="md-nav__item">
-  <a href="#e" class="md-nav__link">
-    E.
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#f" class="md-nav__link">
-    F.
-  </a>
-  
-</li>
-        
       </ul>
     </nav>
   
@@ -663,29 +635,89 @@
                   
 
 
-<h1 id="367">3.67</h1>
+<h1 id="372">3.72</h1>
 <h2 id="solution">Solution</h2>
+<p>Assembly code:</p>
+<pre><code class="language-asm">    long aframe(long n, long idx, long *q)
+    n in %rdi, idx in %rsi, q in %rdx
+1   aframe:
+2   pushq   %rbp
+3   movq    %rsp, %rbp
+4   subq    $16, %rsp           Allocate space for i (%rsp = s1)
+5   leaq    30(,%rdi,8), %rax
+6   andq    $-16, %rax
+7   subq    %rax, %rsp          Allocate space for array p (%rsp = s2)
+8   leaq    15(%rsp), %r8
+9   andq    $-16, %r8           Set %r8 to &amp;p[0]
+    ⋮
+</code></pre>
 <h4 id="a">A.</h4>
-<p><img alt="image" src="/assets/3.67.A.stack.png" /></p>
+<div class="arithmatex">\[
+s2 = s1 - (30 + 8 \cdot n)\ \text{AND}\ (-16)
+\]</div>
+<p>The <span class="arithmatex">\(k\ \text{AND}\ (-16)\)</span> is equivalent to <span class="arithmatex">\(k - k \bmod 16\)</span> (from the bitwise representation
+of -16)</p>
+<p>We have,</p>
+<p><span class="arithmatex">\((30 + 8 \cdot n)\ \text{AND}\ (-16) = 30 + 8 \cdot n - (30 + 8 \cdot n) \bmod 16\)</span></p>
+<p><span class="arithmatex">\(= 30 + 8 \cdot n - (16 + 8 \cdot n + 8 + 6) \bmod 16\)</span></p>
+<p><span class="arithmatex">\(= 30 + 8 \cdot n - (16 + 8 \cdot (n+1) + 6) \bmod 16\)</span></p>
+<p>We have two cases, when n is even and when is odd</p>
+<p><strong>When n is even,</strong></p>
+<p><span class="arithmatex">\(n = 2k\)</span></p>
+<p><span class="arithmatex">\(\implies (16 + 8 \cdot (n + 1) + 6) \bmod 16 = (16 + 8 \cdot (2k + 1) + 6) \bmod 16\)</span></p>
+<p><span class="arithmatex">\(= (16 \cdot (k + 1) + 14) \bmod 16\)</span></p>
+<p><span class="arithmatex">\(= 14\)</span></p>
+<p><span class="arithmatex">\((30 + 8 \cdot n)\ \text{AND}\ (-16) = 30 + 8 \cdot n - 14 = 16 + 8 \cdot n\)</span></p>
+<p><strong>When n is odd,</strong></p>
+<p>n + 1 is even. <span class="arithmatex">\(\implies n + 1 = 2k\)</span></p>
+<p><span class="arithmatex">\((16 + 8 \cdot (n + 1) + 6) \bmod 16 = (16 + 8 \cdot (2k) + 6) \bmod 16\)</span></p>
+<p><span class="arithmatex">\(= 6\)</span></p>
+<p>We get, <span class="arithmatex">\((30 + 8 \cdot n)\ \text{AND}\ (-16) = 30 + 8 \cdot n - 6 = 24 + 8 \cdot n\)</span></p>
+<div class="arithmatex">\[
+\begin{align}
+s_2 = \begin{cases} s_1 - 8 \cdot n - 16 &amp; \text{if n is even} \\
+s_1 - 8 \cdot n - 24 &amp; \text{if n is odd} \end{cases}
+\end{align}
+\]</div>
 <h4 id="b">B.</h4>
-<p><code>stack pointer + 64</code></p>
+<p>From lines 8 and 9, <span class="arithmatex">\(p = 15 + s_2\ \text{AND}\ (-16)\)</span>.</p>
+<p><span class="arithmatex">\(= 15 + s_2 - (15 + s_2) \bmod 16\)</span></p>
+<p><span class="arithmatex">\((15 + s_2) \bmod 16 = (15 \bmod 16 + s_2 \bmod 16) \bmod 16\)</span></p>
+<p><span class="arithmatex">\(= (15 + s_2 \bmod 16) \bmod 16\)</span></p>
+<p><span class="arithmatex">\(s_2 \bmod 16\)</span> can have 16 values, from 0 to 15.</p>
+<p>We have these two cases:</p>
+<p><strong>Case 1:</strong> <span class="arithmatex">\(s_2 \bmod 16 = 0\)</span></p>
+<p><span class="arithmatex">\((15 + s_2 \bmod 16) \bmod 16 = 15\)</span>, and we get <span class="arithmatex">\(p = 15 + s_2 - 15 = s_2\)</span></p>
+<p><strong>Case 2:</strong> <span class="arithmatex">\(1 &lt;= (s_2 \bmod 16) &lt;= 15\)</span></p>
+<p>Let <span class="arithmatex">\(k = s_2 \bmod 16\)</span></p>
+<p><span class="arithmatex">\((15 + k) \bmod 16 = (16 - 1 + k) \bmod 16 = (k - 1) \bmod 16\)</span></p>
+<p><span class="arithmatex">\(0 &lt;= k - 1 &lt;= 14 \implies p = 15 + s_2 - (s_2 \bmod 16 - 1) = 16 + s_2 - s_2 \bmod 16\)</span></p>
+<div class="arithmatex">\[
+\begin{align}
+p = \begin{cases} s_2 &amp; \text{if $s_2$ is a multiple of 16} \\
+s_2 + 16 - s_2 \bmod 16 &amp; \text{otherwise} \end{cases}
+\end{align}
+\]</div>
 <h4 id="c">C.</h4>
-<p>Relative to the stack pointer.</p>
-<p>But there is an extra offset of 8 added due to <code>call</code>
-(occupied by the return address), so an offset of 24 from
-<code>%rsp</code> would refer to <code>s.p</code> from the answer to A, and
-<code>s.a[0]</code> would be at an offset of 8.</p>
+<p><span class="arithmatex">\(e_1 + e_2 = s_1 - s_2\)</span></p>
+<p>From A,</p>
+<p><span class="arithmatex">\(e_1 + e_2\)</span> is either 16 (when <span class="arithmatex">\(n\)</span> is even) or 24 (when <span class="arithmatex">\(n\)</span> is odd).</p>
+<p>From B,</p>
+<p><span class="arithmatex">\(e2\)</span> is either 0 (when <span class="arithmatex">\(s_2\)</span>, and consequently <span class="arithmatex">\(s_1\)</span>, as the offset between <span class="arithmatex">\(s_1\)</span> and <span class="arithmatex">\(s_2\)</span>
+is also a multiple of 16), or <span class="arithmatex">\(16 - s_2 mod 16\)</span> (same as <span class="arithmatex">\(16 - s_1 mod 16\)</span>).</p>
+<p>We end up with four cases</p>
+<div class="arithmatex">\[
+\begin{align}
+e_1 = \begin{cases} 24 - 0 &amp; \text{if $s_1$ is a multiple of 16 and n is odd} \\
+24 - (16 - s_1 \bmod 16) &amp; \text{if $s_1$ is not a multiple of 16 and n is odd} \\
+16 - 0 &amp; \text{if $s_1$ is a multiple of 16 and n is even} \\
+16 - (16 - s_1 \bmod 16) &amp; \text{if $s_1$ is not a mulitiple of 16 and n is even} \end{cases}
+\end{align}
+\]</div>
+<p>By comparing these cases, the case for maximum is case 1 where <span class="arithmatex">\(e_1\)</span> is 24, and the case for minimum
+is the last one, where <span class="arithmatex">\(e_1\)</span> is 1 when <span class="arithmatex">\(s_1 \bmod 16\)</span> is 1.</p>
 <h4 id="d">D.</h4>
-<p>By moving elements of s to addresses relative to the argument.</p>
-<h4 id="e">E.</h4>
-<p><img alt="image" src="/assets/3.67.E.stack.png" /></p>
-<h4 id="f">F.</h4>
-<p>Structs can be passed as part of the "Argument build" area
-on the stack frame of the caller. The argument that is
-passed in <code>%rdi</code> register was the memory address of where
-the return struct should be stored. The space for it was
-allocated by the caller before hand. This was also the
-address that was returned.</p>
+<p>Always a multiple of 16 relative to <span class="arithmatex">\(s_1\)</span>.</p>
 
 
 
@@ -706,7 +738,7 @@ address that was returned.</p>
     <nav class="md-footer__inner md-grid" aria-label="Footer" >
       
         
-        <a href="../3.66/" class="md-footer__link md-footer__link--prev" aria-label="Previous: 3.66" rel="prev">
+        <a href="../3.71/" class="md-footer__link md-footer__link--prev" aria-label="Previous: 3.71" rel="prev">
           <div class="md-footer__button md-icon">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
           </div>
@@ -715,20 +747,20 @@ address that was returned.</p>
               <span class="md-footer__direction">
                 Previous
               </span>
-              3.66
+              3.71
             </div>
           </div>
         </a>
       
       
         
-        <a href="../3.68/" class="md-footer__link md-footer__link--next" aria-label="Next: 3.68" rel="next">
+        <a href="../3.73/" class="md-footer__link md-footer__link--next" aria-label="Next: 3.73" rel="next">
           <div class="md-footer__title">
             <div class="md-ellipsis">
               <span class="md-footer__direction">
                 Next
               </span>
-              3.68
+              3.73
             </div>
           </div>
           <div class="md-footer__button md-icon">
